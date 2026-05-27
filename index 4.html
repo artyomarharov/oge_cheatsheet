@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ОГЭ математика - удобная шпаргалка</title>
+  <style>
+    :root {
+      --brand: #FFC034;
+      --brand-soft: #fff4cf;
+      --brand-deep: #8a5a00;
+      --bg: #fff8e8;
+      --paper: #ffffff;
+      --ink: #201a10;
+      --muted: #665b49;
+      --line: #ead8aa;
+      --soft: #fff4cf;
+      --green: #176b63;
+      --blue: #254f7e;
+      --violet: #7b5aa6;
+      --orange: #d46820;
+      --rose: #9d3f5f;
+      --warn: #fff0bd;
+      --shadow: 0 16px 38px rgba(97, 67, 16, 0.13);
+      --header: #1d2830;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 4%, rgba(255,192,52,.42), transparent 32%),
+        radial-gradient(circle at 92% 12%, rgba(37,79,126,.16), transparent 30%),
+        linear-gradient(135deg, #fff8e6 0%, #fff2c7 38%, #eef7f4 100%);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    .page { max-width: 1320px; margin: 0 auto; padding: 24px; }
+    header {
+      margin-top: 18px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,192,52,.96), rgba(255,192,52,.72) 34%, transparent 34%),
+        linear-gradient(135deg, #26343d 0%, #19242b 100%);
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    h1 { margin: 0; font-size: clamp(2.3rem, 5vw, 5.2rem); line-height: .96; letter-spacing: 0; color: #fff; text-shadow: 0 3px 14px rgba(0,0,0,.22); }
+    .lead { margin: 16px 0 0; max-width: 850px; color: rgba(255,255,255,.86); font-size: 1.08rem; line-height: 1.55; }
+    .notice { background: #fff; border: 1px solid rgba(255,192,52,.7); border-radius: 8px; padding: 16px; line-height: 1.5; box-shadow: 0 10px 24px rgba(0,0,0,.16); color: var(--ink); }
+    .notice b { color: var(--brand-deep); }
+
+    nav { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; background: rgba(255,248,232,.88); backdrop-filter: blur(14px); border-top: 1px solid rgba(234,216,170,.72); border-bottom: 1px solid rgba(234,216,170,.72); }
+    nav a { flex: 0 0 auto; text-decoration: none; color: #1f2629; background: rgba(255,255,255,.88); border: 1px solid rgba(255,192,52,.76); border-radius: 999px; padding: 10px 14px; font-weight: 800; box-shadow: 0 5px 14px rgba(97,67,16,.08); }
+    nav a:hover { background: var(--brand); border-color: var(--brand); color: #1b1b1b; }
+
+    section { padding: 48px 0 18px; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0; font-size: clamp(1.8rem, 3.4vw, 3.2rem); line-height: 1.05; letter-spacing: 0; color: #26343d; }
+    h2::after { content: ""; display: block; width: 92px; height: 7px; margin-top: 12px; border-radius: 999px; background: linear-gradient(90deg, var(--brand), var(--green)); }
+    .section-note { margin: 10px 0 24px; max-width: 900px; color: var(--muted); line-height: 1.55; }
+    .topic { margin: 22px 0; padding: 22px; background: rgba(255,255,255,.96); border: 1px solid rgba(234,216,170,.96); border-top: 6px solid var(--brand); border-radius: 8px; box-shadow: var(--shadow); }
+    .topic h3 { margin: 0 0 14px; font-size: 1.6rem; line-height: 1.15; color: #26343d; }
+    .topic h4 { margin: 18px 0 8px; font-size: 1.12rem; color: #283238; }
+    .topic p, .topic li { color: var(--muted); line-height: 1.52; }
+    .grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); gap: 20px; align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .subgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .mini { border: 1px solid var(--line); background: linear-gradient(180deg, #fff, #fffaf0); border-radius: 8px; padding: 14px; }
+    .mini h4:first-child { margin-top: 0; }
+    .formula { margin: 10px 0; padding: 11px 13px; border-left: 5px solid var(--brand); border-radius: 6px; background: linear-gradient(90deg, #fff7dc, #ffffff); font-family: "Times New Roman", Georgia, serif; font-size: 1.18rem; line-height: 1.5; color: #111; box-shadow: inset 0 0 0 1px rgba(255,192,52,.22); }
+    .formula.small { font-size: 1.03rem; }
+    .frac {
+      display: inline-grid;
+      grid-template-rows: auto auto;
+      align-items: center;
+      justify-items: center;
+      vertical-align: middle;
+      margin: 0 .18em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .frac > span:first-child {
+      display: block;
+      min-width: 100%;
+      padding: 0 .25em .1em;
+      border-bottom: 1.5px solid currentColor;
+      text-align: center;
+    }
+    .frac > span:last-child {
+      display: block;
+      padding: .12em .25em 0;
+      text-align: center;
+    }
+    .sqrt {
+      display: inline-block;
+      padding-left: .15em;
+      border-top: 1.5px solid currentColor;
+      transform: translateY(.08em);
+    }
+    .tag { display: inline-block; margin: 0 6px 8px 0; padding: 4px 9px; border-radius: 999px; background: #26343d; color: #fff; font-size: .88rem; font-weight: 800; }
+    .tag:nth-of-type(2n) { background: var(--green); }
+    .tag:nth-of-type(3n) { background: var(--blue); }
+    .tip { margin: 12px 0; padding: 12px 14px; border: 1px solid rgba(255,192,52,.9); background: linear-gradient(135deg, #fff1bd, #fffaf0); border-radius: 8px; color: #4b3a15; line-height: 1.45; }
+    .task-label {
+      display: inline-block;
+      margin: 18px 0 6px;
+      padding: 4px 10px;
+      background: var(--brand);
+      color: #050505;
+      font-weight: 900;
+      font-size: 1.28rem;
+      line-height: 1.15;
+      border-radius: 4px;
+      box-shadow: 0 4px 0 rgba(138,90,0,.22);
+    }
+    .tire-code {
+      margin: 6px 0 12px;
+      font-size: 1.28rem;
+      color: #111;
+    }
+    .tire-code .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 1.55em;
+      height: 1.55em;
+      margin: 0 .04em;
+      border: 1.5px solid #111;
+      border-radius: 50%;
+      font-family: Arial, sans-serif;
+      font-size: .86em;
+      line-height: 1;
+    }
+    .code-under {
+      display: inline-block;
+      border-bottom: 3px solid var(--rose);
+      padding-bottom: 1px;
+    }
+
+    .diagram { display: block; width: 100%; max-width: 440px; height: auto; margin: 8px auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 8px 18px rgba(97,67,16,.08); }
+    .diagram text { font-family: "Times New Roman", Georgia, serif; fill: #111; font-size: 15px; }
+    .diagram .thin { stroke: #111; stroke-width: 2; fill: none; }
+    .diagram .soft { fill: rgba(142,136,189,.28); stroke: var(--violet); stroke-width: 2; }
+    .diagram .blue { stroke: #8498d6; stroke-width: 2; fill: none; }
+    .diagram .dash { stroke-dasharray: 8 7; }
+    .diagram .orange { stroke: var(--orange); }
+    .diagram .axis { stroke: #222; stroke-width: 1.5; marker-end: url(#arrow); }
+    .wide { max-width: 650px; }
+    .photo {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      margin: 8px auto;
+      border: 3px solid #fff;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(97,67,16,.16);
+    }
+    .geo-figure {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      margin: 10px auto 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(97,67,16,.08);
+    }
+    .geo-figure text { font-family: "Times New Roman", Georgia, serif; fill: #111; font-size: 15px; }
+    .geo-figure .thin { stroke: #111; stroke-width: 2; fill: none; }
+    .geo-figure .soft { fill: rgba(142,136,189,.24); stroke: var(--violet); stroke-width: 2; }
+    .geo-figure .blue { stroke: #8498d6; stroke-width: 2; fill: none; }
+    .geo-figure .shade { fill: rgba(132,152,214,.18); }
+    .venn-grid { display: grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 12px; }
+    .venn-card { border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; grid-template-columns: 80px 1fr; align-items: center; gap: 10px; background: linear-gradient(180deg, #fff, #fff8e8); }
+    .venn-card strong { font-family: "Times New Roman", Georgia, serif; font-size: 1.4rem; }
+
+    .toc-block { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+    .toc-card { background: var(--paper); border: 1px solid var(--line); border-top: 5px solid var(--brand); border-radius: 8px; padding: 16px; box-shadow: var(--shadow); }
+    .toc-card h3 { margin: 0 0 8px; }
+
+    @media (max-width: 980px) {
+      header, .grid-2, .grid-3, .toc-block { grid-template-columns: 1fr; }
+      .subgrid, .venn-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .page { padding: 16px; }
+      .topic { padding: 16px; }
+      .formula { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="#222"></path>
+      </marker>
+    </defs>
+  </svg>
+  <div class="page">
+    <header>
+      <div>
+        <h1>ОГЭ математика</h1>
+        <p class="lead">Полная шпаргалка из файла перенесена в страницу: текст набран вручную, геометрические схемы перерисованы средствами HTML/SVG, а для шины и печи поставлены отдельные понятные изображения.</p>
+      </div>
+      <aside class="notice"><b>Логика страницы:</b> материалы разбиты на 3 большие части. Внутри каждого блока есть формулы, пояснения, мини-схемы и подсказки, чтобы ребенку было удобно читать, а не разглядывать мелкий скан.</aside>
+    </header>
+
+    <nav>
+      <a href="#practice">1. Задания 1-5</a>
+      <a href="#algebra">2. Алгебра</a>
+      <a href="#geometry">3. Геометрия</a>
+      <a href="#graphs">Графики</a>
+    </nav>
+
+    <section id="practice">
+      <h2>1 часть. Задания 1-5</h2>
+      <p class="section-note">Шины, листы, деревни, тарифы, печи и квартиры. В этих задачах важнее всего правильно распознать, что означает каждое число в условии.</p>
+
+      <article class="topic">
+        <div class="grid-2">
+          <div>
+            <h3>Шины</h3>
+            <span class="tag">маркировка</span><span class="tag">проценты</span><span class="tag">дюймы</span>
+            <div class="tire-code">
+              <span class="mark">1</span> <span class="mark">2</span> <span class="mark">3</span><br>
+              Дано: <span class="code-under">205</span>/<span class="code-under">55</span> R<span class="code-under">14</span>
+            </div>
+            <div class="task-label">Задание №2</div>
+            <div class="formula">H = <span class="frac"><span>① · ②</span><span>100</span></span></div>
+            <div class="task-label">Задание №3</div>
+            <div class="formula">d = ③ · 25,4 <span class="frac"><span>мм</span><span>дюйм</span></span></div>
+            <div class="formula">D = 2H + d = 2 · <span class="frac"><span>① · ②</span><span>100</span></span> + ③ · 25,4</div>
+            <div class="task-label">Задание №4</div>
+            <div class="tire-code">
+              <span class="mark">1</span> <span class="mark">2</span> <span class="mark">3</span>
+              <span class="mark">I</span> <span class="mark">II</span> <span class="mark">III</span><br>
+              Дано: <span class="code-under">205</span>/<span class="code-under">55</span> R<span class="code-under">14</span>,
+              <span class="code-under">165</span>/<span class="code-under">65</span> R<span class="code-under">14</span>.
+            </div>
+            <div class="formula">r₂ - r₁ = H₂ - H₁ = <span class="frac"><span>Ⅰ · Ⅱ</span><span>100</span></span> - <span class="frac"><span>① · ②</span><span>100</span></span></div>
+            <div class="task-label">Задание №5</div>
+            <div class="formula"><span class="frac"><span>разница между диаметрами</span><span>диаметр завода</span></span> · 100</div>
+          </div>
+          <img class="photo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4RDgRXhpZgAATU0AKgAAAAgABAE7AAIAAAAHAAAISodpAAQAAAABAAAIUpydAAEAAAAOAAAQyuocAAcAAAgMAAAAPgAAAAAc6gAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFsZW5rYQAAAAWQAwACAAAAFAAAEKCQBAACAAAAFAAAELSSkQACAAAAAzIyAACSkgACAAAAAzIyAADqHAAHAAAIDAAACJQAAAAAHOoAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyMDIyOjEyOjA5IDEzOjU2OjIwADIwMjI6MTI6MDkgMTM6NTY6MjAAAABBAGwAZQBuAGsAYQAAAP/hCxlodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0n77u/JyBpZD0nVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkJz8+DQo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIj48cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPjxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSJ1dWlkOmZhZjViZGQ1LWJhM2QtMTFkYS1hZDMxLWQzM2Q3NTE4MmYxYiIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIi8+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPjx4bXA6Q3JlYXRlRGF0ZT4yMDIyLTEyLTA5VDEzOjU2OjIwLjIyMTwveG1wOkNyZWF0ZURhdGU+PC9yZGY6RGVzY3JpcHRpb24+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPjxkYzpjcmVhdG9yPjxyZGY6U2VxIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpsaT5BbGVua2E8L3JkZjpsaT48L3JkZjpTZXE+DQoJCQk8L2RjOmNyZWF0b3I+PC9yZGY6RGVzY3JpcHRpb24+PC9yZGY6UkRGPjwveDp4bXBtZXRhPg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSd3Jz8+/9sAQwAHBQUGBQQHBgUG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UUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBh6V/yN2v/wDbv/6LNblZGnW00XibWp5I2WKbyPLcjhsIQcfStegAooooAK+d/jLp0GofGzwn4d0dri2utUlWbUpIrmTLxs4XpuwMLHIcDFfRFfPHh+wh+In7U3ia/unuPsWiQtbxNb3EkLK64iwHjZWGT5p4PNAHc+OfAvgzw94F1jVSlxpklraSPDcxajOrpJtOzb8/JLYGO+cU/wCAep+JNX+FsF34tlnnma4cWk9xkyS2+F2sxPLfNvwT1AFc58dfDOi+HPh+fENrPdjVbK6h+wm/vZb1Hctgr5c7Op+Xc3TPy16Z8P8AV7/X/h7omq6xbrb3l3aJJKirtHI4YDsCMHHvQB0VFFFABRRRQBh+M/8AkUb3/tn/AOjFrcrI8VW0134Zu4LaNpZW2bUUZJw6mtegAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKGs6ZNq1h9mt9VvtKfeG+0WJjEmB/D86MMH6Z4rhPD/wUsPC1xfT6B4s8S2c2oOHunWa2YysCxBJaA92b869KooA4Of4RaLquqW194q1PWPErWp3QQapcqYUPr5caIp6c5Bz3zXdqoVQqgAAYAA6UtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//Z" alt="Схема шины: ширина B, высота профиля H, диаметр диска d и общий диаметр D">
+        </div>
+      </article>
+
+      <article class="topic">
+        <div class="grid-2">
+          <div>
+            <h3>Листы форматов A0, A1, A2...</h3>
+            <span class="tag">подобие</span><span class="tag">площадь</span>
+            <p>Номер листа показывает, сколько раз лист A0 разделили пополам.</p>
+            <div class="formula">количество листов формата Aₙ из одного A0 = 2ⁿ</div>
+            <p>Пример: из одного листа A6 получится листов A9:</p>
+            <div class="formula">2<sup>9-6</sup> = 2³ = 8</div>
+            <p>Все листы A0, A1, A2 подобны друг другу, поэтому отношения сторон одинаковы:</p>
+            <div class="formula"><span class="frac"><span>большая сторона</span><span>меньшая сторона</span></span> = √2 ≈ 1,4</div>
+            <div class="formula"><span class="frac"><span>меньшая сторона</span><span>большая сторона</span></span> = <span class="frac"><span>1</span><span>√2</span></span> ≈ 0,7</div>
+            <div class="formula">S<sub>листа</sub> = <span class="frac"><span>S<sub>A0</sub></span><span>2<sup>номер листа</sup></span></span> = <span class="frac"><span>10000 см²</span><span>2<sup>номер листа</sup></span></span></div>
+            <div class="formula">S<sub>листа</sub> = <span class="frac"><span>длина (мм)</span><span>10</span></span> · <span class="frac"><span>ширина (мм)</span><span>10</span></span></div>
+            <p>Для двух соседних форматов коэффициент подобия k = √2 ≈ 1,41.</p>
+            <div class="formula">шрифт в большем листе ≈ шрифт в меньшем листе · 1,41</div>
+            <div class="formula">шрифт в меньшем листе ≈ <span class="frac"><span>шрифт в большем листе</span><span>1,41</span></span></div>
+            <div class="formula"><span class="frac"><span>длина большего</span><span>длина меньшего</span></span> = <span class="frac"><span>пункт на большем</span><span>пункт на меньшем</span></span></div>
+            <div class="formula">масса пачки = <span class="frac"><span>m<sub>1м²</sub></span><span>2<sup>номер листа</sup></span></span> · количество листов</div>
+          </div>
+          <svg class="diagram" viewBox="0 0 360 260" role="img" aria-label="Схема листа">
+            <rect x="95" y="35" width="140" height="190" fill="#fff" stroke="#111" stroke-width="2"/>
+            <line x1="95" y1="225" x2="235" y2="35" class="thin"/>
+            <text x="122" y="246">Меньшая сторона</text>
+            <text x="248" y="168" transform="rotate(-90 248 168)">Большая сторона</text>
+            <text x="134" y="132" transform="rotate(-52 134 132)">Диагональ</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="topic">
+        <div class="grid-2">
+          <div>
+            <h3>Деревни и дороги</h3>
+            <p>Расстояние между пунктами по проселочной дороге часто находится по теореме Пифагора.</p>
+            <div class="formula">c = √(a² + b²)</div>
+            <p>Для расхода топлива отдельно считают путь по шоссе и путь по грунтовой дороге:</p>
+            <div class="formula"><span class="frac"><span>расход по шоссе</span><span>100</span></span> · расстояние по шоссе = <span class="frac"><span>расход по грунтовой дороге</span><span>100</span></span> · расстояние по грунтовой дороге</div>
+          </div>
+          <svg class="diagram" viewBox="0 0 380 260" role="img" aria-label="Деревни и дороги">
+            <line x1="65" y1="40" x2="65" y2="210" class="thin"/>
+            <line x1="65" y1="40" x2="260" y2="40" class="thin"/>
+            <line x1="65" y1="210" x2="260" y2="40" class="thin dash"/>
+            <line x1="65" y1="125" x2="260" y2="40" class="thin dash"/>
+            <text x="48" y="45">3</text><text x="48" y="132">2</text><text x="48" y="215">1</text><text x="265" y="45">4</text>
+            <text x="155" y="31">a</text><text x="42" y="90">b</text><text x="152" y="95">c</text>
+            <line x1="190" y1="172" x2="245" y2="172" stroke="#777" stroke-width="5"/>
+            <text x="254" y="177">трасса</text>
+            <line x1="190" y1="205" x2="245" y2="205" class="thin dash"/>
+            <text x="254" y="209">проселочная дорога</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Тарифы и проценты</h3>
+        <p>В вопросах “на сколько процентов...?” сравнивают позднее и раннее значение. То, что было <b>до</b>, берем за 100%.</p>
+        <div class="subgrid">
+          <div class="mini">
+            <h4>1 способ</h4>
+            <div class="formula"><span class="frac"><span>до</span><span>после</span></span> = <span class="frac"><span>100%</span><span>x%</span></span></div>
+            <div class="formula">ответ = x% - 100%</div>
+          </div>
+          <div class="mini">
+            <h4>2 способ</h4>
+            <div class="formula">разница = после - до</div>
+            <div class="formula"><span class="frac"><span>до</span><span>разница</span></span> = <span class="frac"><span>100%</span><span>y%</span></span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <div class="grid-2">
+          <div>
+            <h3>Печи</h3>
+            <p><b>a</b> - длина, <b>b</b> - ширина, <b>c</b> - высота.</p>
+            <div class="formula">V = a · b · c</div>
+            <div class="formula">S<sub>пола</sub> = a · b</div>
+            <div class="formula">S<sub>стен с дверью</sub> = 2c(a + b)</div>
+            <div class="formula">S<sub>стен без двери</sub> = 2c(a + b) - S<sub>двери</sub></div>
+            <p>Радиус закругления арки находится по теореме Пифагора:</p>
+            <div class="formula">R = √(x² + (<span class="frac"><span>y</span><span>2</span></span>)²)</div>
+          </div>
+          <img class="photo" src="data:image/png;base64,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" alt="Схема печи с кожухом, топкой, высотами 61 и 53 и шириной 36">
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Квартиры на плане</h3>
+        <p>Площадь комнаты на плане с клетками:</p>
+        <div class="formula">S = длина · ширина · (длина стороны клетки)²</div>
+        <p>Если сторона клетки дана в сантиметрах, не забывай перевод в метры или квадратные метры.</p>
+        <h4>Отличие A от B в процентах</h4>
+        <p>Во всех подобных задачах за 100% берем число в конце вопроса. В русском языке то, с чем сравниваем, почти всегда находится в конце вопроса.</p>
+        <div class="subgrid">
+          <div class="mini"><div class="formula"><span class="frac"><span>B</span><span>A</span></span> = <span class="frac"><span>100%</span><span>x%</span></span></div><div class="formula">x% - 100%</div></div>
+          <div class="mini"><div class="formula">разница = A - B</div><div class="formula"><span class="frac"><span>B</span><span>разница</span></span> = <span class="frac"><span>100%</span><span>y%</span></span></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="algebra">
+      <h2>2 часть. Алгебра</h2>
+      <p class="section-note">Формулы сокращенного умножения, степени, корни, квадратный трехчлен, вероятность, множества, функции, прогрессии и метод интервалов.</p>
+
+      <div class="grid-3">
+        <article class="topic">
+          <h3>ФСУ</h3>
+          <div class="formula">(a + b)² = a² + 2ab + b²</div>
+          <div class="formula">(a - b)² = a² - 2ab + b²</div>
+          <div class="formula">a² - b² = (a - b)(a + b)</div>
+          <div class="formula">(a + b)³ = a³ + 3a²b + 3ab² + b³</div>
+          <div class="formula">(a - b)³ = a³ - 3a²b + 3ab² - b³</div>
+          <div class="formula">a³ + b³ = (a + b)(a² - ab + b²)</div>
+          <div class="formula">a³ - b³ = (a - b)(a² + ab + b²)</div>
+          <h4>Преобразования</h4>
+          <div class="formula">a(b + c - d) = ab + ac - ad</div>
+          <div class="formula">-(a - b) = b - a</div>
+        </article>
+
+        <article class="topic">
+          <h3>Степени и корни</h3>
+          <div class="formula">aⁿ = a · a · ... · a</div>
+          <div class="formula">aⁿ · aᵏ = aⁿ⁺ᵏ</div>
+          <div class="formula"><span class="frac"><span>aⁿ</span><span>aᵏ</span></span> = aⁿ⁻ᵏ</div>
+          <div class="formula">(aⁿ)ᵏ = aⁿᵏ</div>
+          <div class="formula">(a · b)ⁿ = aⁿ · bⁿ</div>
+          <div class="formula">(<span class="frac"><span>a</span><span>b</span></span>)ⁿ = <span class="frac"><span>aⁿ</span><span>bⁿ</span></span></div>
+          <div class="formula">a⁻ⁿ = <span class="frac"><span>1</span><span>aⁿ</span></span>, a ≠ 0</div>
+          <div class="formula"><span class="frac"><span>1</span><span>a⁻ⁿ</span></span> = aⁿ, a ≠ 0</div>
+          <div class="formula">a⁰ = 1</div>
+          <h4>Свойства корней</h4>
+          <div class="formula">√(a · b) = √a · √b</div>
+          <div class="formula">√(<span class="frac"><span>a</span><span>b</span></span>) = <span class="frac"><span>√a</span><span>√b</span></span></div>
+          <div class="formula">(√a)² = a</div>
+          <div class="formula">√a² = |a|</div>
+        </article>
+
+        <article class="topic">
+          <h3>Квадратный трехчлен</h3>
+          <div class="formula">ax² + bx + c = 0</div>
+          <div class="formula">D = b² - 4ac</div>
+          <div class="formula">x₁,₂ = <span class="frac"><span>-b ± √D</span><span>2a</span></span></div>
+          <h4>Теорема Виета</h4>
+          <div class="formula">x₁ + x₂ = <span class="frac"><span>-b</span><span>a</span></span></div>
+          <div class="formula">x₁ · x₂ = <span class="frac"><span>c</span><span>a</span></span></div>
+          <h4>Разложение на множители</h4>
+          <div class="formula">ax² + bx + c = a(x - x₁)(x - x₂)</div>
+        </article>
+      </div>
+
+      <article class="topic">
+        <h3>Множества и круги Эйлера</h3>
+        <p>A - все, что внутри круга A. B - все, что внутри круга B. Черта сверху означает противоположное событие: все, что снаружи круга.</p>
+        <p>∩ - пересечение: A ∩ B значит “A пересекается с B”. ∪ - объединение: A ∪ B значит “A объединяется с B”.</p>
+        <div class="venn-grid">
+          <div class="venn-card"><strong>A</strong><svg class="diagram" viewBox="0 0 180 100"><circle cx="70" cy="50" r="35" class="soft"/><circle cx="110" cy="50" r="35" class="thin"/><text x="55" y="28">A</text><text x="120" y="28">B</text></svg></div>
+          <div class="venn-card"><strong>Ā</strong><svg class="diagram" viewBox="0 0 180 100"><rect x="8" y="8" width="164" height="84" fill="#b8cae6"/><circle cx="70" cy="50" r="35" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="110" cy="50" r="35" fill="none" stroke="#111" stroke-width="2"/></svg></div>
+          <div class="venn-card"><strong>B</strong><svg class="diagram" viewBox="0 0 180 100"><circle cx="70" cy="50" r="35" class="thin"/><circle cx="110" cy="50" r="35" class="soft"/></svg></div>
+          <div class="venn-card"><strong>B̄</strong><svg class="diagram" viewBox="0 0 180 100"><rect x="8" y="8" width="164" height="84" fill="#b8cae6"/><circle cx="70" cy="50" r="35" fill="none" stroke="#111" stroke-width="2"/><circle cx="110" cy="50" r="35" fill="#fff" stroke="#111" stroke-width="2"/></svg></div>
+          <div class="venn-card"><strong>A ∩ B</strong><svg class="diagram" viewBox="0 0 180 100"><clipPath id="va"><circle cx="70" cy="50" r="35"/></clipPath><circle cx="70" cy="50" r="35" class="thin"/><circle cx="110" cy="50" r="35" class="thin"/><circle cx="110" cy="50" r="35" class="soft" clip-path="url(#va)"/></svg></div>
+          <div class="venn-card"><strong>A ∪ B</strong><svg class="diagram" viewBox="0 0 180 100"><circle cx="70" cy="50" r="35" class="soft"/><circle cx="110" cy="50" r="35" class="soft"/></svg></div>
+          <div class="venn-card"><strong>A ∩ B̄</strong><svg class="diagram" viewBox="0 0 180 100"><circle cx="70" cy="50" r="35" class="soft"/><circle cx="110" cy="50" r="35" fill="#fff" stroke="#111" stroke-width="2"/></svg></div>
+          <div class="venn-card"><strong>Ā ∪ B</strong><svg class="diagram" viewBox="0 0 180 100"><rect x="8" y="8" width="164" height="84" fill="#b8cae6"/><circle cx="70" cy="50" r="35" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="110" cy="50" r="35" class="soft"/></svg></div>
+        </div>
+      </article>
+
+      <div class="grid-3">
+        <article class="topic">
+          <h3>Теория вероятности</h3>
+          <div class="formula">n - общее число исходов</div>
+          <div class="formula">m - число исходов, благоприятствующих событию A</div>
+          <div class="formula">P(A) = <span class="frac"><span>m</span><span>n</span></span></div>
+          <h4>Несовместные события</h4>
+          <div class="formula">P(A + B) = P(A) + P(B)</div>
+          <h4>Независимые события</h4>
+          <div class="formula">P(AB) = P(A) · P(B)</div>
+        </article>
+
+        <article class="topic">
+          <h3>Прогрессии</h3>
+          <h4>Арифметическая</h4>
+          <p>Каждое следующее число больше или меньше предыдущего на одно и то же число.</p>
+          <div class="formula">aₙ = a₁ + d(n - 1)</div>
+          <div class="formula">Sₙ = <span class="frac"><span>a₁ + aₙ</span><span>2</span></span> · n</div>
+          <p>n - количество членов, a₁ - первый член, aₙ - n-й член, d - разность, Sₙ - сумма.</p>
+          <h4>Геометрическая</h4>
+          <p>Каждое следующее число больше или меньше предыдущего в одинаковое количество раз.</p>
+          <div class="formula">bₙ = b₁ · qⁿ⁻¹</div>
+          <div class="formula">Sₙ = b₁ · <span class="frac"><span>qⁿ - 1</span><span>q - 1</span></span></div>
+        </article>
+
+        <article class="topic">
+          <h3>Метод интервалов</h3>
+          <div class="formula"><span class="frac"><span>(x - 1)(x - 2)</span><span>(x - 3)(x - 4)</span></span> ≤ 0</div>
+          <ol>
+            <li>Найти нули числителя: x = 1 или x = 2.</li>
+            <li>Найти нули знаменателя: x = 3 или x = 4. Они всегда выколотые.</li>
+            <li>Расставить знаки на числовой прямой.</li>
+          </ol>
+          <svg class="diagram wide" viewBox="0 0 520 120" role="img" aria-label="Метод интервалов">
+            <line x1="40" y1="70" x2="470" y2="70" class="axis"/>
+            <text x="487" y="76">x</text>
+            <text x="70" y="42">+</text><text x="170" y="42">-</text><text x="275" y="42">+</text><text x="390" y="42">+</text>
+            <circle cx="120" cy="70" r="7" fill="#222"/><circle cx="220" cy="70" r="7" fill="#222"/><circle cx="320" cy="70" r="7" fill="#fff" stroke="#222" stroke-width="3"/><circle cx="420" cy="70" r="7" fill="#fff" stroke="#222" stroke-width="3"/>
+            <text x="114" y="98">1</text><text x="214" y="98">2</text><text x="314" y="98">3</text><text x="414" y="98">4</text>
+            <line x1="120" y1="70" x2="220" y2="70" stroke="#555" stroke-width="8" opacity=".35"/>
+            <line x1="320" y1="70" x2="420" y2="70" stroke="#555" stroke-width="8" opacity=".2"/>
+          </svg>
+          <div class="formula">Ответ: ● → [ ;  ○ → ( &nbsp;&nbsp; x ∈ [1;2] ∪ (3;4)</div>
+          <p>Если нуль нечетной степени, знак функции при переходе через него меняется. Если нуль четной степени - не меняется.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="graphs">
+      <h2>Функции и графики</h2>
+      <p class="section-note">Этот блок относится к алгебре, но вынесен отдельно, потому что на листах много графических подсказок.</p>
+      <div class="grid-3">
+        <article class="topic">
+          <h3>Линейная функция</h3>
+          <div class="formula">y = kx + b</div>
+          <p><b>k</b> - наклон, крутость. <b>b</b> - высота, коэффициент b равен координате y точки пересечения графика с осью Oy.</p>
+          <p>Чем больше по модулю k, тем сильнее наклон прямой.</p>
+          <svg class="diagram" viewBox="0 0 300 230">
+            <line x1="40" y1="170" x2="260" y2="170" class="axis"/><line x1="90" y1="200" x2="90" y2="30" class="axis"/>
+            <path d="M45 170 L235 18" class="thin"/><path d="M45 190 L235 38" class="thin"/><path d="M45 210 L235 58" class="thin"/><path d="M45 150 L235 0" class="thin"/>
+            <text x="206" y="35">y=x+2</text><text x="206" y="58">y=x+1</text><text x="206" y="82">y=x</text><text x="206" y="108">y=x-1</text>
+          </svg>
+        </article>
+        <article class="topic">
+          <h3>Квадратичная функция</h3>
+          <div class="formula">y = ax² + bx + c</div>
+          <p>a &gt; 0 - ветви вверх. a &lt; 0 - ветви вниз. c - координата y точки пересечения графика с осью Oy.</p>
+          <p>Вершина параболы:</p>
+          <div class="formula">x<sub>в</sub> = <span class="frac"><span>-b</span><span>2a</span></span></div>
+          <p>Чтобы построить параболу, находят вершину и несколько точек слева и справа от нее.</p>
+          <svg class="diagram" viewBox="0 0 300 230">
+            <line x1="40" y1="170" x2="260" y2="170" class="axis"/><line x1="145" y1="205" x2="145" y2="25" class="axis"/>
+            <path d="M70 180 Q145 40 220 180" class="thin"/><path d="M90 45 Q145 195 210 45" class="thin"/>
+            <text x="183" y="96">a&gt;0</text><text x="68" y="58">a&lt;0</text>
+          </svg>
+        </article>
+        <article class="topic">
+          <h3>Гипербола</h3>
+          <div class="formula">y = <span class="frac"><span>k</span><span>x</span></span></div>
+          <p>При k &gt; 0 гипербола находится в I и III четвертях. При k &lt; 0 - во II и IV четвертях. Чем меньше значение |k|, тем сильнее гипербола прижимается к осям.</p>
+          <svg class="diagram" viewBox="0 0 300 230">
+            <line x1="40" y1="115" x2="260" y2="115" class="axis"/><line x1="150" y1="205" x2="150" y2="25" class="axis"/>
+            <path d="M165 75 C190 45 230 35 250 30 M135 155 C105 185 70 195 50 200" class="thin"/>
+            <path d="M55 38 C90 48 120 75 135 105 M165 125 C190 150 225 178 248 198" class="blue"/>
+            <text x="222" y="70">I</text><text x="64" y="82">II</text><text x="65" y="185">III</text><text x="220" y="174">IV</text>
+          </svg>
+        </article>
+      </div>
+
+      <article class="topic">
+        <h3>Графики №22</h3>
+        <div class="grid-2">
+          <div>
+            <h4>Раскрытие модуля</h4>
+            <div class="formula">y = |f(x)| ⇔ y = { f(x), если f(x) ≥ 0; -f(x), если f(x) &lt; 0 }</div>
+            <h4>Семейства прямых</h4>
+            <div class="formula">y = kx - семейство прямых, проходящих через начало координат (0;0)</div>
+            <div class="formula">y = m - семейство прямых, параллельных оси Ox</div>
+            <h4>Область определения</h4>
+            <div class="formula">y = √g(x) ⇒ g(x) ≥ 0</div>
+            <div class="formula">y = <span class="frac"><span>1</span><span>g(x)</span></span> ⇒ g(x) ≠ 0</div>
+          </div>
+          <div>
+            <svg class="diagram wide" viewBox="0 0 420 330" role="img" aria-label="Семейства графиков">
+              <line x1="40" y1="170" x2="380" y2="170" class="axis"/><line x1="210" y1="300" x2="210" y2="28" class="axis"/>
+              <g stroke="#8498d6" stroke-width="2">
+                <line x1="70" y1="285" x2="350" y2="55"/><line x1="80" y1="245" x2="340" y2="95"/><line x1="90" y1="210" x2="330" y2="130"/>
+                <line x1="70" y1="55" x2="350" y2="285"/><line x1="80" y1="95" x2="340" y2="245"/><line x1="90" y1="130" x2="330" y2="210"/>
+              </g>
+              <text x="246" y="63">y=2x</text><text x="258" y="102">y=1x</text><text x="272" y="142">y=0,5x</text><text x="268" y="222">y=-0,5x</text><text x="255" y="258">y=-1x</text><text x="240" y="292">y=-2x</text>
+            </svg>
+            <svg class="diagram wide" viewBox="0 0 420 180" role="img" aria-label="Прямые y=m">
+              <line x1="40" y1="130" x2="380" y2="130" class="axis"/><line x1="210" y1="155" x2="210" y2="20" class="axis"/>
+              <line x1="70" y1="72" x2="350" y2="72" class="blue"/><line x1="70" y1="100" x2="350" y2="100" class="blue"/>
+              <text x="360" y="76">y=2</text><text x="360" y="104">y=1</text>
+            </svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <div class="grid-2">
+          <div>
+            <h3>Кусочно-заданная функция</h3>
+            <p>Функция, которая задана разными формулами на разных промежутках.</p>
+            <div class="formula">y = { x², при x &lt; 0; x, при 0 ≤ x &lt; 4; 4, при x ≥ 4 }</div>
+          </div>
+          <svg class="diagram wide" viewBox="0 0 440 300" role="img" aria-label="Кусочно-заданная функция">
+            <line x1="55" y1="235" x2="385" y2="235" class="axis"/><line x1="125" y1="260" x2="125" y2="30" class="axis"/>
+            <path d="M40 45 Q88 235 125 235" stroke="#62a65d" stroke-width="3" fill="none"/>
+            <line x1="125" y1="235" x2="265" y2="95" stroke="#e55c5c" stroke-width="3"/>
+            <line x1="265" y1="95" x2="382" y2="95" stroke="#c577d8" stroke-width="3"/>
+            <line x1="265" y1="35" x2="265" y2="250" stroke="#777" stroke-dasharray="8 7"/>
+            <text x="113" y="252">0</text><text x="150" y="252">1</text><text x="260" y="252">4</text><text x="98" y="100">4</text><text x="280" y="88">y=4</text>
+            <text x="36" y="275">x &lt; 0</text><text x="155" y="275">0 ≤ x &lt; 4</text><text x="292" y="275">x ≥ 4</text>
+          </svg>
+        </div>
+      </article>
+    </section>
+
+    <section id="geometry">
+      <h2>3 часть. Геометрия</h2>
+      <p class="section-note">Все основные геометрические формулы и свойства из файла: углы, треугольники, окружности, площади, подобие, четырехугольники.</p>
+
+      <article class="topic">
+        <h3>Углы, параллельные прямые, многоугольники</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Вертикальные и смежные углы</h4>
+            <svg class="geo-figure" viewBox="0 0 260 150" role="img" aria-label="Вертикальные и смежные углы">
+              <line x1="35" y1="78" x2="225" y2="78" class="thin"/>
+              <line x1="70" y1="30" x2="190" y2="125" class="thin"/>
+              <path d="M132 78 A38 38 0 0 1 162 101" class="soft"/>
+              <path d="M132 78 A42 42 0 0 1 102 55" class="soft"/>
+              <text x="88" y="61">1</text><text x="166" y="111">2</text><text x="158" y="70">3</text><text x="98" y="94">4</text>
+            </svg>
+            <p>Вертикальные углы - углы, стороны которых являются продолжением друг друга. Они равны.</p>
+            <div class="formula">∠1 = ∠2, ∠3 = ∠4</div>
+            <p>Смежные углы имеют одну общую сторону, а две другие стороны лежат на одной прямой.</p>
+            <div class="formula">∠1 + ∠2 = 180°</div>
+          </div>
+          <div class="mini">
+            <h4>Сумма углов</h4>
+            <svg class="geo-figure" viewBox="0 0 260 150" role="img" aria-label="Сумма углов многоугольников">
+              <polygon points="35,112 75,38 125,112" class="thin"/>
+              <rect x="148" y="48" width="72" height="64" class="thin"/>
+              <polygon points="70,130 35,90 52,42 105,42 122,90" class="thin"/>
+              <text x="45" y="30">180°</text><text x="153" y="38">360°</text><text x="54" y="145">540°</text>
+            </svg>
+            <div class="formula">треугольник: 180°</div>
+            <div class="formula">четырехугольник: 360°</div>
+            <div class="formula">пятиугольник: 540°</div>
+            <div class="formula">шестиугольник: 720°</div>
+          </div>
+          <div class="mini">
+            <h4>Признаки параллельности</h4>
+            <svg class="geo-figure" viewBox="0 0 260 150" role="img" aria-label="Признаки параллельности">
+              <line x1="35" y1="48" x2="225" y2="48" class="thin"/>
+              <line x1="35" y1="105" x2="225" y2="105" class="thin"/>
+              <line x1="96" y1="130" x2="165" y2="22" class="thin"/>
+              <path d="M120 48 A25 25 0 0 1 109 69" class="soft"/><path d="M143 105 A25 25 0 0 1 132 126" class="soft"/>
+              <text x="126" y="66">α</text><text x="150" y="124">α</text>
+            </svg>
+            <ol>
+              <li>Накрест лежащие углы равны.</li>
+              <li>Соответственные углы равны.</li>
+              <li>Сумма односторонних углов равна 180°.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Тригонометрия и теоремы</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Sin, cos, tg, ctg</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Прямоугольный треугольник для синуса и косинуса">
+              <polygon points="60,135 60,35 200,135" class="thin"/>
+              <rect x="60" y="119" width="16" height="16" fill="none" stroke="#111"/>
+              <path d="M178 135 A28 28 0 0 0 159 122" class="soft"/>
+              <text x="49" y="32">B</text><text x="48" y="154">C</text><text x="204" y="154">A</text>
+              <text x="120" y="154">AC</text><text x="35" y="90">BC</text><text x="128" y="82">AB</text>
+            </svg>
+            <div class="formula">sin ∠A = cos ∠B = <span class="frac"><span>BC</span><span>AB</span></span></div>
+            <div class="formula">cos ∠A = sin ∠B = <span class="frac"><span>AC</span><span>AB</span></span></div>
+            <div class="formula">tg ∠A = ctg ∠B = <span class="frac"><span>BC</span><span>AC</span></span></div>
+            <div class="formula">ctg ∠A = tg ∠B = <span class="frac"><span>AC</span><span>BC</span></span></div>
+          </div>
+          <div class="mini">
+            <h4>Тригонометрические тождества</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Единичная окружность для тригонометрических тождеств">
+              <circle cx="130" cy="88" r="58" class="thin"/>
+              <line x1="42" y1="88" x2="218" y2="88" class="thin"/>
+              <line x1="130" y1="150" x2="130" y2="26" class="thin"/>
+              <line x1="130" y1="88" x2="178" y2="55" class="blue"/>
+              <line x1="178" y1="55" x2="178" y2="88" stroke="#111" stroke-dasharray="5 4"/>
+              <text x="151" y="82">cos A</text><text x="184" y="74">sin A</text><text x="105" y="65">1</text>
+            </svg>
+            <div class="formula">sin²(A) + cos²(A) = 1</div>
+            <div class="formula">tg(A) · ctg(A) = 1</div>
+            <div class="formula">tg²(A) + 1 = <span class="frac"><span>1</span><span>cos²(A)</span></span></div>
+            <div class="formula">1 + ctg²(A) = <span class="frac"><span>1</span><span>sin²(A)</span></span></div>
+          </div>
+          <div class="mini">
+            <h4>Теоремы</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Треугольник для теорем синусов и косинусов">
+              <polygon points="45,128 198,128 95,38" class="thin"/>
+              <circle cx="118" cy="93" r="72" class="blue"/>
+              <path d="M65 128 A26 26 0 0 1 79 106" class="soft"/><path d="M178 128 A25 25 0 0 0 160 107" class="soft"/>
+              <text x="36" y="148">A</text><text x="202" y="148">C</text><text x="86" y="33">B</text>
+              <text x="118" y="145">b</text><text x="62" y="86">c</text><text x="158" y="86">a</text>
+            </svg>
+            <div class="formula">a² = b² + c² - 2bc·cos A</div>
+            <div class="formula">b² = a² + c² - 2ac·cos B</div>
+            <div class="formula">c² = a² + b² - 2ab·cos C</div>
+            <div class="formula"><span class="frac"><span>a</span><span>sin A</span></span> = <span class="frac"><span>b</span><span>sin B</span></span> = <span class="frac"><span>c</span><span>sin C</span></span> = 2R</div>
+            <div class="formula">a² + b² = c²</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Треугольники</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Площадь треугольника</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Площадь треугольника">
+              <polygon points="45,142 210,142 92,34" class="thin"/>
+              <line x1="92" y1="34" x2="92" y2="142" class="blue"/>
+              <rect x="92" y="126" width="16" height="16" fill="none" stroke="#111"/>
+              <circle cx="120" cy="95" r="37" class="thin"/>
+              <line x1="120" y1="95" x2="120" y2="132" class="blue"/>
+              <text x="122" y="132">r</text><text x="120" y="160">a</text><text x="77" y="94">hₐ</text>
+            </svg>
+            <div class="formula">S = <span class="frac"><span>1</span><span>2</span></span> · hₐ · a</div>
+            <div class="formula">S = <span class="frac"><span>1</span><span>2</span></span> · a · b · sin C</div>
+            <div class="formula">S = <span class="frac"><span>P · r</span><span>2</span></span>, где P = a + b + c</div>
+            <div class="formula">S = <span class="frac"><span>abc</span><span>4R</span></span></div>
+            <h4>Формула Герона</h4>
+            <div class="formula">S = √(p(p-a)(p-b)(p-c))</div>
+            <div class="formula">p = <span class="frac"><span>a + b + c</span><span>2</span></span></div>
+          </div>
+          <div class="mini">
+            <h4>Равносторонний треугольник</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Равносторонний треугольник">
+              <polygon points="55,145 205,145 130,35" class="thin"/>
+              <line x1="130" y1="35" x2="130" y2="145" class="blue"/>
+              <circle cx="130" cy="108" r="36" class="thin"/>
+              <circle cx="130" cy="108" r="73" class="blue"/>
+              <text x="126" y="164">a</text><text x="137" y="92">r</text><text x="137" y="68">R</text><text x="142" y="100">h</text>
+            </svg>
+            <p>Все стороны равны, все углы равны 60°.</p>
+            <div class="formula">h = <span class="frac"><span>√3</span><span>2</span></span> · a</div>
+            <div class="formula">r = <span class="frac"><span>√3</span><span>6</span></span> · a</div>
+            <div class="formula">R = <span class="frac"><span>√3</span><span>3</span></span> · a</div>
+          </div>
+          <div class="mini">
+            <h4>Прямоугольный треугольник</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Прямоугольный треугольник">
+              <polygon points="50,145 210,145 210,38" class="thin"/>
+              <rect x="194" y="129" width="16" height="16" fill="none" stroke="#111"/>
+              <line x1="210" y1="145" x2="125" y2="88" class="blue"/>
+              <text x="128" y="160">a</text><text x="218" y="96">b</text><text x="116" y="82">h</text><text x="124" y="90">c</text>
+              <path d="M75 145 A28 28 0 0 0 67 125" class="soft"/><text x="83" y="134">30°</text>
+            </svg>
+            <div class="formula">h = <span class="frac"><span>ab</span><span>c</span></span></div>
+            <div class="formula">h = √(cₐ · cᵦ)</div>
+            <div class="formula">R = <span class="frac"><span>c</span><span>2</span></span>, где c - гипотенуза</div>
+            <div class="formula">r = <span class="frac"><span>a + b - c</span><span>2</span></span></div>
+            <p>Катет, лежащий напротив угла 30°, равен половине гипотенузы.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Свойства треугольника</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Признаки равенства</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Признаки равенства треугольников">
+              <polygon points="35,130 105,130 65,45" class="thin"/>
+              <polygon points="150,130 220,130 180,45" class="thin"/>
+              <path d="M48 130 Q64 112 82 130" class="soft"/><path d="M163 130 Q179 112 197 130" class="soft"/>
+              <line x1="65" y1="45" x2="35" y2="130" stroke="#111" stroke-width="2"/><line x1="180" y1="45" x2="150" y2="130" stroke="#111" stroke-width="2"/>
+              <text x="58" y="96">=</text><text x="173" y="96">=</text>
+            </svg>
+            <ol>
+              <li>По двум сторонам и углу между ними.</li>
+              <li>По стороне и двум прилежащим к ней углам.</li>
+              <li>По трем сторонам.</li>
+            </ol>
+          </div>
+          <div class="mini">
+            <h4>Средняя линия</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Средняя линия треугольника">
+              <polygon points="50,145 210,145 130,35" class="thin"/>
+              <circle cx="90" cy="90" r="4" fill="#111"/><circle cx="170" cy="90" r="4" fill="#111"/>
+              <line x1="90" y1="90" x2="170" y2="90" class="blue"/>
+              <text x="42" y="162">A</text><text x="212" y="162">B</text><text x="130" y="30">C</text><text x="78" y="86">D</text><text x="178" y="86">E</text>
+            </svg>
+            <p>Отрезок, соединяющий середины двух сторон треугольника.</p>
+            <div class="formula">DE ∥ AB</div>
+            <div class="formula">DE = <span class="frac"><span>1</span><span>2</span></span> AB</div>
+            <div class="formula">S<sub>CDE</sub> = <span class="frac"><span>1</span><span>4</span></span> S<sub>ABC</sub></div>
+          </div>
+          <div class="mini">
+            <h4>Медиана</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Медианы треугольника">
+              <polygon points="45,145 215,145 125,34" class="thin"/>
+              <line x1="125" y1="34" x2="130" y2="145" class="blue"/>
+              <line x1="45" y1="145" x2="170" y2="90" class="blue"/>
+              <line x1="215" y1="145" x2="85" y2="90" class="blue"/>
+              <circle cx="128" cy="106" r="4" fill="#111"/><text x="134" y="104">O</text>
+              <text x="35" y="162">A</text><text x="218" y="162">B</text><text x="123" y="30">C</text>
+            </svg>
+            <p>Медиана, проведенная из прямого угла, равна половине гипотенузы.</p>
+            <div class="formula">CM = AM = MB</div>
+            <p>Медианы пересекаются в одной точке и делят друг друга в отношении 2:1 от вершины.</p>
+            <div class="formula"><span class="frac"><span>AO</span><span>OA₁</span></span> = <span class="frac"><span>BO</span><span>OB₁</span></span> = <span class="frac"><span>CO</span><span>OC₁</span></span> = <span class="frac"><span>2</span><span>1</span></span></div>
+            <p>Медиана делит треугольник на два треугольника равной площади.</p>
+            <div class="formula">AD = DC ⇒ S<sub>ABD</sub> = S<sub>DBC</sub></div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Биссектриса</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Биссектриса треугольника">
+              <polygon points="45,135 215,135 92,42" class="thin"/>
+              <line x1="92" y1="42" x2="118" y2="135" class="blue"/>
+              <path d="M76 58 Q90 74 106 59" class="soft"/>
+              <circle cx="118" cy="96" r="34" class="thin"/>
+              <text x="35" y="152">A</text><text x="220" y="152">C</text><text x="86" y="36">B</text><text x="112" y="153">K</text>
+            </svg>
+            <div class="formula"><span class="frac"><span>AB</span><span>AK</span></span> = <span class="frac"><span>BC</span><span>CK</span></span> или <span class="frac"><span>CK</span><span>AK</span></span> = <span class="frac"><span>BC</span><span>AB</span></span></div>
+            <p>Точка пересечения биссектрис треугольника является центром вписанной окружности.</p>
+          </div>
+          <div class="mini">
+            <h4>Серединный перпендикуляр</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Серединные перпендикуляры">
+              <polygon points="52,132 210,132 116,36" class="thin"/>
+              <line x1="130" y1="132" x2="130" y2="54" class="blue"/>
+              <line x1="92" y1="84" x2="164" y2="84" class="blue"/>
+              <circle cx="130" cy="90" r="55" class="thin"/>
+              <rect x="130" y="116" width="14" height="14" fill="none" stroke="#111"/>
+              <circle cx="130" cy="90" r="4" fill="#111"/><text x="138" y="88">O</text>
+            </svg>
+            <p>Прямая, проходящая через середину отрезка перпендикулярно ему.</p>
+            <p>Центр описанной окружности - точка пересечения серединных перпендикуляров.</p>
+          </div>
+          <div class="mini">
+            <h4>Свойства высот</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Высоты треугольника">
+              <polygon points="42,132 218,132 172,42" class="thin"/>
+              <line x1="172" y1="42" x2="172" y2="132" class="blue"/>
+              <line x1="42" y1="132" x2="190" y2="78" class="blue"/>
+              <line x1="218" y1="132" x2="120" y2="88" class="blue"/>
+              <circle cx="169" cy="96" r="4" fill="#111"/><text x="176" y="98">O</text>
+              <text x="36" y="150">A</text><text x="220" y="150">C</text><text x="174" y="36">B</text>
+            </svg>
+            <p>В остроугольном треугольнике два треугольника, образованные высотами, подобны:</p>
+            <div class="formula">△AOH<sub>C</sub> ∼ △COH<sub>A</sub></div>
+            <p>Высота, проведенная к гипотенузе, образует три подобных треугольника:</p>
+            <div class="formula">△ABC ∼ △ACH₁ ∼ △ABH₁</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Подобие</h3>
+        <div class="grid-2">
+          <div>
+            <ol>
+              <li>Если ∠A = ∠A₁ и ∠B = ∠B₁, то △ABC ∼ △A₁B₁C₁.</li>
+              <li>Если AB/A₁B₁ = BC/B₁C₁ и ∠B = ∠B₁, то △ABC ∼ △A₁B₁C₁.</li>
+              <li>Если AB/A₁B₁ = BC/B₁C₁ = AC/A₁C₁, то △ABC ∼ △A₁B₁C₁.</li>
+            </ol>
+            <div class="formula"><span class="frac"><span>S₂</span><span>S₁</span></span> = k²</div>
+          </div>
+          <svg class="diagram wide" viewBox="0 0 520 220">
+            <polygon points="55,165 165,165 95,60" fill="none" stroke="#8d99c5" stroke-width="3"/>
+            <polygon points="290,165 460,165 345,35" fill="none" stroke="#8d99c5" stroke-width="3"/>
+            <path d="M74 148 Q92 130 114 148" class="blue"/><path d="M309 148 Q337 120 370 148" class="blue"/>
+            <text x="50" y="185">A</text><text x="164" y="185">C</text><text x="88" y="54">B</text>
+            <text x="282" y="185">A₁</text><text x="458" y="185">C₁</text><text x="340" y="30">B₁</text>
+            <text x="113" y="130">S₁</text><text x="360" y="120">S₂</text><text x="218" y="110">∼</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Четырехугольники</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Квадрат и прямоугольник</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Квадрат и прямоугольник">
+              <rect x="38" y="45" width="72" height="72" class="thin"/><rect x="145" y="55" width="90" height="52" class="thin"/>
+              <text x="70" y="137">a</text><text x="180" y="128">a</text><text x="130" y="85">b</text>
+            </svg>
+            <div class="formula">квадрат: S = a²</div>
+            <div class="formula">прямоугольник: S = ab</div>
+            <div class="tip"><b>Лайфхак для диагонали квадрата:</b> если сторона квадрата равна a, то диагональ d = a√2.</div>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Диагональ квадрата равна a корней из 2">
+              <rect x="38" y="32" width="106" height="106" class="thin"/>
+              <line x1="38" y1="138" x2="144" y2="32" stroke="#111" stroke-width="2.5"/>
+              <text x="84" y="150">a</text>
+              <text x="153" y="91">a</text>
+              <text x="78" y="92">d</text>
+              <rect x="170" y="62" width="68" height="42" rx="6" fill="#fff" stroke="#c8d0cc"/>
+              <text x="184" y="90">d = a√2</text>
+            </svg>
+          </div>
+          <div class="mini">
+            <h4>Параллелограмм</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Параллелограмм">
+              <polygon points="48,125 190,125 220,55 78,55" class="thin"/>
+              <line x1="78" y1="55" x2="78" y2="125" class="blue"/>
+              <rect x="78" y="109" width="16" height="16" fill="none" stroke="#111"/>
+              <path d="M64 125 A32 32 0 0 1 74 100" class="soft"/>
+              <text x="116" y="145">a</text><text x="85" y="98">h</text><text x="74" y="142">A</text>
+            </svg>
+            <div class="formula">S<sub>ABCD</sub> = AB · AD · sin ∠A</div>
+            <div class="formula">S<sub>ABCD</sub> = ah</div>
+            <p>В параллелограмме сумма углов, прилежащих к любой стороне, равна 180°.</p>
+            <div class="formula">∠A + ∠B = 180°, ∠B + ∠C = 180°</div>
+            <div class="formula">∠C + ∠D = 180°, ∠D + ∠A = 180°</div>
+          </div>
+          <div class="mini">
+            <h4>Трапеция</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Трапеция">
+              <polygon points="42,128 220,128 176,54 85,54" class="thin"/>
+              <line x1="85" y1="54" x2="85" y2="128" class="blue"/>
+              <line x1="65" y1="91" x2="198" y2="91" class="blue"/>
+              <rect x="85" y="112" width="16" height="16" fill="none" stroke="#111"/>
+              <text x="122" y="49">a</text><text x="122" y="147">b</text><text x="196" y="86">c</text><text x="95" y="96">h</text>
+            </svg>
+            <div class="formula">S = <span class="frac"><span>a + b</span><span>2</span></span> · h</div>
+            <p>Равнобедренная трапеция: боковые стороны равны, углы при основании равны.</p>
+            <p>Средняя линия трапеции параллельна основаниям и равна полусумме оснований.</p>
+            <div class="formula">c = <span class="frac"><span>a + b</span><span>2</span></span></div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Ромб</h4>
+            <svg class="geo-figure" viewBox="0 0 260 190" role="img" aria-label="Ромб">
+              <polygon points="130,34 225,94 130,154 35,94" class="thin"/>
+              <line x1="35" y1="94" x2="225" y2="94" class="orange thin"/>
+              <line x1="130" y1="34" x2="130" y2="154" class="orange thin"/>
+              <circle cx="130" cy="94" r="32" class="thin"/>
+              <text x="138" y="87">r</text><text x="150" y="110">d₁</text><text x="97" y="88">d₂</text>
+            </svg>
+            <div class="formula">S = <span class="frac"><span>d₁ · d₂</span><span>2</span></span></div>
+            <div class="formula">S = ah</div>
+            <div class="formula">S = a² · sin A</div>
+            <div class="formula">S = 2ar</div>
+          </div>
+          <div class="mini">
+            <h4>Площадь четырехугольника</h4>
+            <svg class="geo-figure" viewBox="0 0 260 190" role="img" aria-label="Площадь четырехугольника по диагоналям">
+              <polygon points="45,120 90,48 218,80 188,154" class="thin"/>
+              <line x1="45" y1="120" x2="218" y2="80" class="orange thin"/>
+              <line x1="90" y1="48" x2="188" y2="154" class="thin"/>
+              <path d="M125 101 A28 28 0 0 1 147 93" class="soft"/>
+              <text x="91" y="118">d₁</text><text x="154" y="132">d₂</text><text x="145" y="102">α</text>
+            </svg>
+            <div class="formula">S = <span class="frac"><span>1</span><span>2</span></span> · d₁d₂ sin α</div>
+            <h4>Вписанный четырехугольник</h4>
+            <svg class="geo-figure" viewBox="0 0 260 180" role="img" aria-label="Вписанный четырехугольник">
+              <circle cx="130" cy="90" r="68" class="thin"/>
+              <polygon points="76,96 111,35 190,70 164,145" class="thin"/>
+              <text x="68" y="101">a</text><text x="103" y="31">b</text><text x="193" y="72">c</text><text x="168" y="151">d</text>
+            </svg>
+            <div class="formula">S = √((p-a)(p-b)(p-c)(p-d))</div>
+            <div class="formula">p = <span class="frac"><span>a + b + c + d</span><span>2</span></span></div>
+          </div>
+          <div class="mini">
+            <h4>Описанный и вписанный</h4>
+            <svg class="geo-figure" viewBox="0 0 260 190" role="img" aria-label="Описанный четырехугольник">
+              <circle cx="130" cy="95" r="48" class="thin"/>
+              <polygon points="52,133 96,30 198,52 211,142" class="thin"/>
+              <text x="70" y="80">a</text><text x="146" y="35">b</text><text x="207" y="96">c</text><text x="115" y="159">d</text>
+            </svg>
+            <p>Описанный четырехугольник:</p>
+            <div class="formula">a + c = b + d</div>
+            <p>Вписанный четырехугольник:</p>
+            <div class="formula">α + β = 180°</div>
+            <div class="formula">α = β</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Окружность</h3>
+        <div class="grid-2">
+          <div>
+            <div class="formula">длина окружности: c = 2πR</div>
+            <div class="formula">площадь круга: S = πR²</div>
+            <div class="formula">площадь кругового сектора: S = <span class="frac"><span>πR²</span><span>360°</span></span> · α</div>
+            <div class="formula">длина дуги: l = <span class="frac"><span>πR</span><span>180°</span></span> · α</div>
+          </div>
+          <svg class="diagram" viewBox="0 0 300 230">
+            <circle cx="150" cy="115" r="75" fill="none" stroke="#111" stroke-width="2"/>
+            <path d="M150 115 L225 115 A75 75 0 0 1 175 185 Z" class="soft"/>
+            <line x1="150" y1="115" x2="225" y2="115" class="thin"/><line x1="150" y1="115" x2="175" y2="185" class="thin"/>
+            <circle cx="150" cy="115" r="4" fill="#111"/><text x="188" y="105">R</text><text x="162" y="148">α</text><text x="206" y="180">l</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="topic">
+        <h3>Метрические соотношения в окружности и свойства углов</h3>
+        <div class="grid-3">
+          <div class="mini">
+            <h4>Пересекающиеся хорды</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Пересекающиеся хорды">
+              <circle cx="130" cy="85" r="62" class="thin"/>
+              <line x1="72" y1="65" x2="188" y2="112" class="thin"/>
+              <line x1="74" y1="112" x2="190" y2="58" class="thin"/>
+              <circle cx="130" cy="86" r="4" fill="#111"/>
+              <text x="95" y="70">a</text><text x="154" y="109">b</text><text x="96" y="115">c</text><text x="155" y="67">d</text>
+            </svg>
+            <div class="formula">ad = bc</div>
+          </div>
+          <div class="mini">
+            <h4>Касательные из одной точки</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Касательные из одной точки">
+              <circle cx="150" cy="88" r="48" class="thin"/>
+              <line x1="48" y1="40" x2="190" y2="52" class="thin"/>
+              <line x1="48" y1="136" x2="183" y2="122" class="thin"/>
+              <circle cx="190" cy="52" r="4" fill="#111"/><circle cx="183" cy="122" r="4" fill="#111"/>
+              <text x="38" y="92">A</text><text x="192" y="49">B</text><text x="185" y="139">C</text>
+            </svg>
+            <div class="formula">AB = AC</div>
+          </div>
+          <div class="mini">
+            <h4>Секущая и касательная</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Секущая и касательная">
+              <circle cx="155" cy="92" r="48" class="thin"/>
+              <line x1="45" y1="135" x2="203" y2="65" class="thin"/>
+              <line x1="45" y1="135" x2="215" y2="135" class="thin"/>
+              <circle cx="117" cy="109" r="4" fill="#111"/><circle cx="199" cy="67" r="4" fill="#111"/><circle cx="201" cy="135" r="4" fill="#111"/>
+              <text x="36" y="152">A</text><text x="111" y="103">C</text><text x="202" y="63">D</text><text x="205" y="153">B</text>
+            </svg>
+            <div class="formula">AB² = AC · AD</div>
+            <div class="formula">AB · AC = AD · AE</div>
+          </div>
+        </div>
+        <div class="subgrid">
+          <div class="mini">
+            <h4>Вписанный и центральный углы</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Вписанный и центральный углы">
+              <circle cx="130" cy="85" r="62" class="thin"/>
+              <line x1="130" y1="85" x2="77" y2="118" class="thin"/><line x1="130" y1="85" x2="184" y2="117" class="thin"/>
+              <line x1="112" y1="25" x2="77" y2="118" class="thin"/><line x1="112" y1="25" x2="184" y2="117" class="thin"/>
+              <path d="M104 101 A31 31 0 0 1 157 101" class="soft"/><path d="M102 54 A28 28 0 0 1 123 53" class="blue"/>
+              <text x="125" y="107">α</text><text x="102" y="49">β</text>
+            </svg>
+            <div class="formula">β = <span class="frac"><span>α</span><span>2</span></span></div>
+          </div>
+          <div class="mini">
+            <h4>Вписанные углы, опирающиеся на одну дугу</h4>
+            <svg class="geo-figure" viewBox="0 0 260 170" role="img" aria-label="Вписанные углы на одну дугу">
+              <circle cx="130" cy="85" r="62" class="thin"/>
+              <line x1="72" y1="108" x2="184" y2="117" class="thin"/>
+              <line x1="72" y1="108" x2="105" y2="28" class="thin"/><line x1="184" y1="117" x2="105" y2="28" class="thin"/>
+              <line x1="72" y1="108" x2="158" y2="34" class="thin"/><line x1="184" y1="117" x2="158" y2="34" class="thin"/>
+              <line x1="72" y1="108" x2="194" y2="74" class="thin"/><line x1="184" y1="117" x2="194" y2="74" class="thin"/>
+              <text x="101" y="47">α</text><text x="153" y="51">β</text><text x="188" y="91">γ</text>
+            </svg>
+            <div class="formula">α = β = γ</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
